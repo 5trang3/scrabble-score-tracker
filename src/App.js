@@ -1,5 +1,7 @@
 import React from 'react';
 import './App.css';
+import Button from '@material-ui/core/Button'
+import PersonAddIcon from '@material-ui/icons/PersonAdd';
 
 class App extends React.Component {
   constructor(props) {
@@ -7,7 +9,11 @@ class App extends React.Component {
   }
   render() {
     return(
-      <div></div>
+      <div>
+        <Button variant='contained' color='primary' endIcon={<PersonAddIcon/>}>
+          Add Player
+        </Button>
+      </div>
     )
   }
 }
