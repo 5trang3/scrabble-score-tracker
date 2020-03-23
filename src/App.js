@@ -6,6 +6,9 @@ import PersonAddIcon from '@material-ui/icons/PersonAdd';
 class App extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      players: [],
+    }
   }
   render() {
     return(
