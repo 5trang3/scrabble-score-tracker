@@ -17,10 +17,10 @@ class ScoreRow extends React.Component {
           </IconButton>
         </TableCell>
         <TableCell>
-          <TextField margin='normal' defaultValue='this.props.word'></TextField>
+          <TextField margin='normal' defaultValue={ this.props.word }></TextField>
         </TableCell>
         <TableCell>
-          <TextField margin='normal' defaultValue='this.props.score'></TextField>
+          <TextField margin='normal' defaultValue={ this.props.score }></TextField>
         </TableCell>
         <TableCell>
           <IconButton>
