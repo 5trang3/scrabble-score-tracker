@@ -9,20 +9,21 @@ import DeleteIcon from '@material-ui/icons/Delete';
 class ScoreRow extends React.Component {
 
   render() {
+    const tableCellStyle = { 'padding-right': '6px', 'padding-left': '6px' }
     return (
       <TableRow>
-        <TableCell>
+        <TableCell style={ tableCellStyle }>
           <IconButton>
             <AddIcon/>
           </IconButton>
         </TableCell>
-        <TableCell>
+        <TableCell style={ tableCellStyle }>
           <TextField margin='normal' defaultValue={ this.props.word }></TextField>
         </TableCell>
-        <TableCell>
+        <TableCell style={ tableCellStyle }>
           <TextField margin='normal' defaultValue={ this.props.score }></TextField>
         </TableCell>
-        <TableCell>
+        <TableCell style={ tableCellStyle }>
           <IconButton>
             <DeleteIcon/>
           </IconButton>
