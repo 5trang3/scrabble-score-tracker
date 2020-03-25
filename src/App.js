@@ -21,7 +21,10 @@ class App extends React.Component {
   addPlayer = () => {
     let players = [...this.state.players];
     if (players.length < 4) {
-      players.push({});
+      players.push({
+        name: '',
+        scores: []
+      });
       this.setState({
         players: players
       })
