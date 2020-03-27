@@ -15,15 +15,15 @@ class PlayerColumn extends React.Component {
   }
 
   createScoreRows = (scores) => {
-    if (scores.length === 0) {
-      return <ScoreRow word='' score='' index={0} />
-    }
-    else {
-      const scoreRows = scores.map(function(score, index) {
-        return <ScoreRow word={score.word} score={score.score} index={index} />
+      const scoreRows = scores.map((score, index) => {
+        return <ScoreRow word={score.word}
+                         score={score.score}
+                         rowIndex={index}
+                         colIndex={this.props.colIndex}
+                         addScoreRow={ this.props.addScoreRow }
+                         handleTextChange = { this.props.handleTextChange }/>
       })
       return scoreRows;
-    }
   }
 
   render() {

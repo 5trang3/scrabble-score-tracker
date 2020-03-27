@@ -23,7 +23,7 @@ class App extends React.Component {
     if (players.length < 4) {
       players.push({
         name: '',
-        scores: []
+        scores: [{ word: '', score: ''}]
       });
       this.setState({
         players: players
@@ -40,10 +40,10 @@ class App extends React.Component {
 
   // Function for creating player columns:
   createPlayerColumns = (players) => {
-    const playerColumns = players.map(function(player, index) {
+    const playerColumns = players.map((player, index) => {
       return (
         <Grid item xs={3}>
-          <PlayerColumn player={ player }/>
+          <PlayerColumn player={ player } colIndex={ index } addScoreRow={ this.addScoreRow } handleTextChange = { this.handleTextChange }/>
         </Grid>
       )
     })
@@ -65,6 +65,24 @@ class App extends React.Component {
     alerts[alertId] = 0;
     this.setState({
       alerts: alerts
+    })
+  }
+
+  // Event handler for adding scoreRow components:
+  addScoreRow = (col, row) => {
+    let players = [...this.state.players];
+    players[col].scores.splice(row, 0, { word: '', score: '' });
+    this.setState({
+      players: players
+    })
+  }
+
+  // Event handler for adding words and scores:
+  handleTextChange = (event, col, row, type) => {
+    let players = [...this.state.players];
+    players[col]['scores'][row][type] = event.target.value;
+    this.setState({
+      players: players
     })
   }
 

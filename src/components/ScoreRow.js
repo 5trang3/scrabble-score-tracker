@@ -13,15 +13,19 @@ class ScoreRow extends React.Component {
     return (
       <TableRow>
         <TableCell style={ tableCellStyle }>
-          <IconButton>
+          <IconButton onClick={() => this.props.addScoreRow(this.props.colIndex, this.props.rowIndex + 1) }>
             <AddIcon/>
           </IconButton>
         </TableCell>
         <TableCell style={ tableCellStyle }>
-          <TextField margin='normal' defaultValue={ this.props.word }></TextField>
+          <TextField margin='normal' value={ this.props.word } onChange={ (event) => this.props.handleTextChange(event, this.props.colIndex, this.props.rowIndex, 'word') }></TextField>
         </TableCell>
         <TableCell style={ tableCellStyle }>
-          <TextField margin='normal' defaultValue={ this.props.score }></TextField>
+          <TextField margin='normal'
+                     value={ this.props.score }
+                     onChange={ (event) => this.props.handleTextChange(event, this.props.colIndex, this.props.rowIndex, 'score') }
+                     error={ isNaN(this.props.score) }
+                     helperText={isNaN(this.props.score) ? 'Score must be a number.' : '' }></TextField>
         </TableCell>
         <TableCell style={ tableCellStyle }>
           <IconButton>
