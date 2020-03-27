@@ -43,7 +43,11 @@ class App extends React.Component {
     const playerColumns = players.map((player, index) => {
       return (
         <Grid item xs={3}>
-          <PlayerColumn player={ player } colIndex={ index } addScoreRow={ this.addScoreRow } handleTextChange = { this.handleTextChange }/>
+          <PlayerColumn player={ player }
+                        colIndex={ index }
+                        addScoreRow={ this.addScoreRow }
+                        deleteScoreRow={ this.deleteScoreRow }
+                        handleTextChange = { this.handleTextChange }/>
         </Grid>
       )
     })
@@ -72,6 +76,15 @@ class App extends React.Component {
   addScoreRow = (col, row) => {
     let players = [...this.state.players];
     players[col].scores.splice(row, 0, { word: '', score: '' });
+    this.setState({
+      players: players
+    })
+  }
+
+  // Event handler for removing scoreRow components:
+  deleteScoreRow = (col, row) => {
+    let players = [...this.state.players];
+    players[col]['scores'].splice(row, 1);
     this.setState({
       players: players
     })

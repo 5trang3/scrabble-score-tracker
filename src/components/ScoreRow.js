@@ -28,7 +28,7 @@ class ScoreRow extends React.Component {
                      helperText={isNaN(this.props.score) ? 'Score must be a number.' : '' }></TextField>
         </TableCell>
         <TableCell style={ tableCellStyle }>
-          <IconButton>
+          <IconButton onClick={() => this.props.deleteScoreRow(this.props.colIndex, this.props.rowIndex)}>
             <DeleteIcon/>
           </IconButton>
         </TableCell>

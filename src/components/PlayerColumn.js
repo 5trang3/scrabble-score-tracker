@@ -21,6 +21,7 @@ class PlayerColumn extends React.Component {
                          rowIndex={index}
                          colIndex={this.props.colIndex}
                          addScoreRow={ this.props.addScoreRow }
+                         deleteScoreRow={ this.props.deleteScoreRow }
                          handleTextChange = { this.props.handleTextChange }/>
       })
       return scoreRows;
