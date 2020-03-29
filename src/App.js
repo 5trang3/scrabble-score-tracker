@@ -5,6 +5,7 @@ import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import PlayerColumn from './components/PlayerColumn'
 import Grid from '@material-ui/core/Grid';
 import Alert from '@material-ui/lab/Alert';
+import TextField from '@material-ui/core/TextField';
 
 class App extends React.Component {
   constructor(props) {
@@ -43,6 +44,7 @@ class App extends React.Component {
     const playerColumns = players.map((player, index) => {
       return (
         <Grid item xs={3}>
+          <TextField variant='outlined' label='Name' fullWidth value={ this.state.players[index]['name']} onChange={ (event) => this.addName(event, index) }></TextField>
           <PlayerColumn player={ player }
                         colIndex={ index }
                         addScoreRow={ this.addScoreRow }
@@ -65,6 +67,7 @@ class App extends React.Component {
       players: players
     })
   }
+
   // Function for creating alerts:
   createAlerts = (alerts) => {
     if (alerts.tooManyPlayers) {
@@ -105,6 +108,15 @@ class App extends React.Component {
   handleTextChange = (event, col, row, type) => {
     let players = [...this.state.players];
     players[col]['scores'][row][type] = event.target.value;
+    this.setState({
+      players: players
+    })
+  }
+
+  // Event handler for adding player names:
+  addName = (event, col) => {
+    let players = [...this.state.players];
+    players[col]['name'] = event.target.value;
     this.setState({
       players: players
     })
