@@ -9,6 +9,8 @@ import TableRow from '@material-ui/core/TableRow';
 import TextField from '@material-ui/core/TextField';
 import TableFooter from '@material-ui/core/TableFooter';
 import ScoreRow from './ScoreRow'
+import CloseIcon from '@material-ui/icons/Close';
+import IconButton from '@material-ui/core/IconButton';
 
 class PlayerColumn extends React.Component {
   constructor(props) {
@@ -38,7 +40,11 @@ class PlayerColumn extends React.Component {
               <TableCell></TableCell>
               <TableCell>Word</TableCell>
               <TableCell>Score</TableCell>
-              <TableCell></TableCell>
+              <TableCell>
+                <IconButton onClick={ () => this.props.removePlayer(this.props.colIndex)}>
+                  <CloseIcon/>
+                </IconButton>
+              </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>

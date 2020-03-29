@@ -48,13 +48,23 @@ class App extends React.Component {
                         addScoreRow={ this.addScoreRow }
                         deleteScoreRow={ this.deleteScoreRow }
                         handleTextChange = { this.handleTextChange }
-                        calculateScore = { this.calculateScore }/>
+                        calculateScore = { this.calculateScore }
+                        removePlayer = { this.removePlayer }/>
+
         </Grid>
       )
     })
     return playerColumns
   }
 
+  // Event handler for removing players:
+  removePlayer = (col) => {
+    let players = [...this.state.players];
+    players.splice(col, 1);
+    this.setState({
+      players: players
+    })
+  }
   // Function for creating alerts:
   createAlerts = (alerts) => {
     if (alerts.tooManyPlayers) {
@@ -106,7 +116,7 @@ class App extends React.Component {
       return (isNaN(scoreObj.score) || scoreObj.score === '') ? acc : acc + Number(scoreObj.score);
     }, 0)
   }
-  
+
   render() {
     const playerColumns = this.createPlayerColumns(this.state.players)
     const alerts = this.createAlerts(this.state.alerts)
