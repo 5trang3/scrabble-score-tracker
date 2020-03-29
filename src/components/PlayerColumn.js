@@ -7,6 +7,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import TextField from '@material-ui/core/TextField';
+import TableFooter from '@material-ui/core/TableFooter';
 import ScoreRow from './ScoreRow'
 
 class PlayerColumn extends React.Component {
@@ -43,6 +44,14 @@ class PlayerColumn extends React.Component {
           <TableBody>
             {scoreRows}
           </TableBody>
+          <TableFooter>
+            <TableRow>
+              <TableCell></TableCell>
+              <TableCell>Total:</TableCell>
+              <TableCell>{ this.props.calculateScore(this.props.colIndex) }</TableCell>
+              <TableCell></TableCell>
+            </TableRow>
+          </TableFooter>
         </Table>
       </TableContainer>
     )

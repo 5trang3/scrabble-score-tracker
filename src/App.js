@@ -47,7 +47,8 @@ class App extends React.Component {
                         colIndex={ index }
                         addScoreRow={ this.addScoreRow }
                         deleteScoreRow={ this.deleteScoreRow }
-                        handleTextChange = { this.handleTextChange }/>
+                        handleTextChange = { this.handleTextChange }
+                        calculateScore = { this.calculateScore }/>
         </Grid>
       )
     })
@@ -99,6 +100,13 @@ class App extends React.Component {
     })
   }
 
+  // Function to calculate score totals:
+  calculateScore = (col) => {
+    return this.state.players[col]['scores'].reduce(function(acc, scoreObj) {
+      return (isNaN(scoreObj.score) || scoreObj.score === '') ? acc : acc + Number(scoreObj.score);
+    }, 0)
+  }
+  
   render() {
     const playerColumns = this.createPlayerColumns(this.state.players)
     const alerts = this.createAlerts(this.state.alerts)
