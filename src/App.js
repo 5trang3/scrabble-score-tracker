@@ -39,6 +39,13 @@ class App extends React.Component {
     }
   }
 
+  componentDidMount() {
+    this.setState(JSON.parse(localStorage.getItem('scrabbleState')));
+    window.addEventListener('beforeunload', () => {
+      return localStorage.setItem('scrabbleState', JSON.stringify(this.state));
+    });
+  }
+
   // Function for creating player columns:
   createPlayerColumns = (players) => {
     const playerColumns = players.map((player, index) => {
