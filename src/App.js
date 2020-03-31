@@ -136,6 +136,16 @@ class App extends React.Component {
     }, 0)
   }
 
+  // Event handler to start a new game:
+  restart = () => {
+    this.setState({
+      players: [],
+      alerts: {
+        tooManyPlayers: 0
+      }
+    })
+  }
+
   render() {
     const playerColumns = this.createPlayerColumns(this.state.players)
     const alerts = this.createAlerts(this.state.alerts)
@@ -145,6 +155,7 @@ class App extends React.Component {
         <Button variant='contained' color='primary' endIcon={<PersonAddIcon/>} onClick={this.addPlayer}>
           Add Player
         </Button>
+        <Button variant='contained' color='secondary' onClick={ this.restart }>New Game</Button>
         <Grid container spacing={1}>
           { playerColumns }
         </Grid>
