@@ -6,6 +6,7 @@ import PlayerColumn from './components/PlayerColumn'
 import Grid from '@material-ui/core/Grid';
 import Alert from '@material-ui/lab/Alert';
 import TextField from '@material-ui/core/TextField';
+import Box from '@material-ui/core/TextField';
 
 class App extends React.Component {
   constructor(props) {
@@ -156,7 +157,7 @@ class App extends React.Component {
           Add Player
         </Button>
         <Button variant='contained' color='secondary' onClick={ this.restart }>New Game</Button>
-        <Grid container spacing={1}>
+        <Grid container spacing={1} style={{ marginTop: '6px' }}>
           { playerColumns }
         </Grid>
       </div>
