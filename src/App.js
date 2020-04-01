@@ -106,7 +106,7 @@ class App extends React.Component {
   // Event handler for removing scoreRow components:
   deleteScoreRow = (col, row) => {
     let players = [...this.state.players];
-    players[col]['scores'].splice(row, 1);
+    players[col]['scores'].length === 1 ? players[col]['scores'][0] = { score: '', word: '' } : players[col]['scores'].splice(row, 1);
     this.setState({
       players: players
     })
