@@ -9,25 +9,27 @@ import DeleteIcon from '@material-ui/icons/Delete';
 class ScoreRow extends React.Component {
 
   render() {
-    const tableCellStyle = { 'padding-right': '6px', 'padding-left': '6px' }
+    const tableCellStyle = { padding: '8px 8px'}
     return (
       <TableRow>
-        <TableCell style={ tableCellStyle }>
+        <TableCell style={ tableCellStyle } align='center'>
           <IconButton onClick={() => this.props.addScoreRow(this.props.colIndex, this.props.rowIndex + 1) }>
             <AddIcon/>
           </IconButton>
         </TableCell>
-        <TableCell style={ tableCellStyle }>
+        <TableCell style={ tableCellStyle } align='center'>
           <TextField margin='normal' value={ this.props.word } onChange={ (event) => this.props.handleTextChange(event, this.props.colIndex, this.props.rowIndex, 'word') }></TextField>
         </TableCell>
-        <TableCell style={ tableCellStyle }>
+        <TableCell style={ tableCellStyle } align='center'>
           <TextField margin='normal'
                      value={ this.props.score }
                      onChange={ (event) => this.props.handleTextChange(event, this.props.colIndex, this.props.rowIndex, 'score') }
                      error={ isNaN(this.props.score) }
-                     helperText={isNaN(this.props.score) ? 'Score must be a number.' : '' }></TextField>
+                     helperText={isNaN(this.props.score) ? 'Score must be a number.' : '' }
+                     inputProps={{ style: { textAlign: 'right'} }}>
+          </TextField>
         </TableCell>
-        <TableCell style={ tableCellStyle }>
+        <TableCell style={ tableCellStyle } align='right'>
           <IconButton onClick={() => this.props.deleteScoreRow(this.props.colIndex, this.props.rowIndex)}>
             <DeleteIcon/>
           </IconButton>

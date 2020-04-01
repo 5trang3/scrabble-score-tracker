@@ -31,16 +31,17 @@ class PlayerColumn extends React.Component {
   }
 
   render() {
+    const tableCellStyle = { padding: '8px 8px'};
     const scoreRows = this.createScoreRows(this.props.player.scores)
     return(
       <TableContainer component={Paper}>
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell></TableCell>
-              <TableCell>Word</TableCell>
-              <TableCell>Score</TableCell>
-              <TableCell>
+              <TableCell align='center' style={ tableCellStyle }></TableCell>
+              <TableCell style={ tableCellStyle }>Word</TableCell>
+              <TableCell align='right' style={ tableCellStyle }>Score</TableCell>
+              <TableCell align='right' style={ tableCellStyle }>
                 <IconButton onClick={ () => this.props.removePlayer(this.props.colIndex)}>
                   <CloseIcon/>
                 </IconButton>
@@ -52,10 +53,10 @@ class PlayerColumn extends React.Component {
           </TableBody>
           <TableFooter>
             <TableRow>
-              <TableCell></TableCell>
-              <TableCell>Total:</TableCell>
-              <TableCell>{ this.props.calculateScore(this.props.colIndex) }</TableCell>
-              <TableCell></TableCell>
+              <TableCell style={ tableCellStyle }></TableCell>
+              <TableCell align='left' style={{ padding: '8px 8px', fontSize: '14px'}}>Total</TableCell>
+              <TableCell align='right' style={{ padding: '8px 8px', fontSize: '14px'}}>{ this.props.calculateScore(this.props.colIndex) }</TableCell>
+              <TableCell style={ tableCellStyle }></TableCell>
             </TableRow>
           </TableFooter>
         </Table>
