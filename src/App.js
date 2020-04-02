@@ -153,7 +153,7 @@ class App extends React.Component {
     return(
       <div>
         { alerts }
-        <Button variant='contained' color='secondary' onClick={ this.restart } style={{ marginRight: '8px' }}>New Game</Button>
+        <Button variant='contained' color='primary' onClick={ this.restart } style={{ marginRight: '8px' }}>New Game</Button>
         <Button variant='contained' color='primary' endIcon={<PersonAddIcon/>} onClick={this.addPlayer}>
           Add Player
         </Button>
