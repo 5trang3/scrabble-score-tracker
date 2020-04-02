@@ -51,7 +51,7 @@ class App extends React.Component {
   createPlayerColumns = (players) => {
     const playerColumns = players.map((player, index) => {
       return (
-        <Grid item xs={3}>
+        <Grid item xs={12} sm={6} lg={3}>
           <TextField variant='outlined' label='Name' fullWidth value={ this.state.players[index]['name']} onChange={ (event) => this.addName(event, index) }></TextField>
           <PlayerColumn player={ player }
                         colIndex={ index }
