@@ -80,7 +80,7 @@ class App extends React.Component {
   createAlerts = (alerts) => {
     if (alerts.tooManyPlayers) {
       return (
-        <Alert severity="error" onClose={() => this.removeAlerts('tooManyPlayers')}>There can only be a maximum of four players</Alert>
+        <Alert style={{ marginBottom: '8px' }} severity="error" onClose={() => this.removeAlerts('tooManyPlayers')}>There can only be a maximum of four players</Alert>
       )
     }
   }
