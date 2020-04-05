@@ -159,12 +159,6 @@ class App extends React.Component {
   createLogin = () => {
     const { isAuthenticated, loginWithRedirect, logout } = this.context;
     return (
-        // {!isAuthenticated && (
-        //   <Button onClick={() => loginWithRedirect({})}>Log in</Button>
-        // )}
-        //
-        // {isAuthenticated && <Button onClick={() => logout()}>Log out</Button>}
-
         isAuthenticated ? <Button onClick={() => logout()}>Log out</Button> : <Button onClick={() => loginWithRedirect({})}>Log in</Button>
     );
   }
