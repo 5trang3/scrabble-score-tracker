@@ -1,14 +1,22 @@
 import React from 'react';
 import './App.css';
 import Button from '@material-ui/core/Button'
+import ButtonGroup from '@material-ui/core/ButtonGroup'
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import PlayerColumn from './components/PlayerColumn'
 import Grid from '@material-ui/core/Grid';
 import Alert from '@material-ui/lab/Alert';
 import TextField from '@material-ui/core/TextField';
 import Box from '@material-ui/core/TextField';
+import Container from '@material-ui/core/Container';
+import Toolbar from '@material-ui/core/Toolbar';
+import { Auth0Context } from "./react-auth0-spa";
+import AppBar from '@material-ui/core/AppBar';
 
 class App extends React.Component {
+
+  static contextType = Auth0Context;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -147,20 +155,43 @@ class App extends React.Component {
     })
   }
 
+  // Create login and logout buttons:
+  createLogin = () => {
+    const { isAuthenticated, loginWithRedirect, logout } = this.context;
+    return (
+        // {!isAuthenticated && (
+        //   <Button onClick={() => loginWithRedirect({})}>Log in</Button>
+        // )}
+        //
+        // {isAuthenticated && <Button onClick={() => logout()}>Log out</Button>}
+
+        isAuthenticated ? <Button onClick={() => logout()}>Log out</Button> : <Button onClick={() => loginWithRedirect({})}>Log in</Button>
+    );
+  }
+
   render() {
     const playerColumns = this.createPlayerColumns(this.state.players)
     const alerts = this.createAlerts(this.state.alerts)
+    const authentication = this.createLogin();
     return(
-      <div>
+      <Container>
+        <AppBar>
+          <Toolbar>
+            <ButtonGroup variant='contained'>
+              <Button onClick={ this.restart }>New Game</Button>
+              <Button endIcon={<PersonAddIcon/>} onClick={this.addPlayer}>Add Player</Button>
+            </ButtonGroup>
+            <ButtonGroup variant='contained' style={{ marginLeft: 'auto' }} variant='contained'>
+              { authentication }
+            </ButtonGroup>
+          </Toolbar>
+        </AppBar>
+        <Toolbar/>
         { alerts }
-        <Button variant='contained' color='primary' onClick={ this.restart } style={{ marginRight: '8px' }}>New Game</Button>
-        <Button variant='contained' color='primary' endIcon={<PersonAddIcon/>} onClick={this.addPlayer}>
-          Add Player
-        </Button>
         <Grid container spacing={1}>
           { playerColumns }
         </Grid>
-      </div>
+      </Container>
     )
   }
 }
