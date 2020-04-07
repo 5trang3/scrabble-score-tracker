@@ -13,6 +13,11 @@ import Toolbar from '@material-ui/core/Toolbar';
 import { Auth0Context } from "./react-auth0-spa";
 import AppBar from '@material-ui/core/AppBar';
 
+
+import { Router, Route, Switch } from "react-router-dom";
+import Profile from "./components/Profile";
+import history from "./utils/history";
+
 class App extends React.Component {
 
   static contextType = Auth0Context;
@@ -88,7 +93,7 @@ class App extends React.Component {
   createAlerts = (alerts) => {
     if (alerts.tooManyPlayers) {
       return (
-        <Alert style={{ marginBottom: '8px' }} severity="error" onClose={() => this.removeAlerts('tooManyPlayers')}>There can only be a maximum of four players</Alert>
+        <Alert severity="error" onClose={() => this.removeAlerts('tooManyPlayers')}>There can only be a maximum of four players</Alert>
       )
     }
   }
