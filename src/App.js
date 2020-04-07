@@ -59,17 +59,15 @@ class App extends React.Component {
   createPlayerColumns = (players) => {
     const playerColumns = players.map((player, index) => {
       return (
-        <Grid item xs={12} sm={6} lg={3} style={{ marginTop: '12px' }}>
-          <TextField variant='outlined' label='Name' fullWidth value={ this.state.players[index]['name']} onChange={ (event) => this.addName(event, index) }></TextField>
           <PlayerColumn player={ player }
                         colIndex={ index }
                         addScoreRow={ this.addScoreRow }
                         deleteScoreRow={ this.deleteScoreRow }
                         handleTextChange = { this.handleTextChange }
                         calculateScore = { this.calculateScore }
-                        removePlayer = { this.removePlayer }/>
-
-        </Grid>
+                        removePlayer = { this.removePlayer }
+                        name= { this.state.players[index]['name'] }
+                        addName = { this.addName }/>
       )
     })
     return playerColumns
@@ -188,8 +186,8 @@ class App extends React.Component {
         </AppBar>
         <Toolbar/>
         { alerts }
-        <Grid container spacing={1}>
-          { playerColumns }
+        <Grid container spacing={1} style={{ marginTop: '12px' }}>
+            { playerColumns }
         </Grid>
       </Container>
     )
