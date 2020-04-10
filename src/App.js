@@ -15,7 +15,6 @@ import AppBar from '@material-ui/core/AppBar';
 
 
 import { Router, Route, Switch } from "react-router-dom";
-import Profile from "./components/Profile";
 import history from "./utils/history";
 
 class App extends React.Component {
